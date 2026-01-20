@@ -65,7 +65,7 @@ st.markdown("Please select analysis level and filters from the sidebar.")
 # Load data safely
 # -------------------------------------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DATA_PATH = os.path.join(BASE_DIR, "../Datasets", "DF_ENROLMENT_CLEANED.csv")
+DATA_PATH = os.path.join(BASE_DIR, "Datasets", "DF_ENROLMENT_CLEANED.csv")
 
 @st.cache_data
 def load_data():
@@ -74,7 +74,7 @@ def load_data():
     # df["month"] = df["date"].dt.to_period("M").astype(str)
     # return df
 
-    files = glob.glob(os.path.join(BASE_DIR, "..", "DF_ENROLMENT_*.csv"))
+    files = glob.glob(os.path.join(BASE_DIR, "Datasets", "DF_ENROLMENT_*.csv"))
     df_list = [pd.read_csv(f) for f in files]
     df = pd.concat(df_list, ignore_index=True)
     df["date"] = pd.to_datetime(df["date"])
